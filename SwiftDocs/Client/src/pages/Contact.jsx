@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react'
 
 const Contact = () => {
-    return <div className="text-white">Contact</div>;
-};
+  return (
+    <div className='pt-[12vh] text-white'>
+        about
+    </div>
+  )
+}
 
-export default Contact;
+export default Contact
