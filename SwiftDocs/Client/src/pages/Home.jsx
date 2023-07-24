@@ -1,11 +1,12 @@
 import React from "react";
+import About from "./About";
 import SVG from "../assets/blob.svg";
 import SVG1 from "../assets/blob1.svg";
 import SVG2 from "../assets/blob2.svg";
 import SVG3 from "../assets/blob3.svg";
 import SVG4 from "../assets/blob4.svg";
 import "./Css/Btn.css";
-import About from "./About";
+// import "./Css/blob.css";
 
 const Home = () => {
     return (
@@ -40,19 +41,19 @@ const Home = () => {
                     <a href="/sign-up">Get started</a>
                 </span>
 
-                <span className="absolute top-[-2vh] left-[-2vw] w-[16vw] h-[3vh] z-[-2]">
+                <span className="animate-pulse absolute top-[0vh] left-[0vw] w-[16vw] h-[3vh] z-[-2]">
                     <img src={SVG} alt="SwiftDocs" />
                 </span>
-                <span className="absolute top-[65vh] right-[-5vw] w-[20vw] h-[5vh] z-[-2]">
+                <span className="animate-pulse absolute top-[65vh] right-[0vw] w-[20vw] h-[5vh] z-[-2]">
                     <img src={SVG1} alt="svg" />
                 </span>
-                <span className="absolute top-[50vh] left-[-2vw] w-[30vw] h-[1vh]  z-[-2]">
+                <span className="animate-pulse absolute top-[50vh] left-[0vw] w-[30vw] h-[1vh]  z-[-2]">
                     <img src={SVG2} alt="svg" />
                 </span>
-                <span className="absolute top-[-0vh] right-[-2vw] w-[16vw] h-[3vh] z-[-2]">
+                <span className="animate-pulse absolute top-[0vh] right-[0vw] w-[16vw] h-[3vh] z-[-2]">
                     <img src={SVG3} alt="svg" />
                 </span>
-                <span className="absolute top-[10vh] left-[50vw] w-[20vw] z-[-2]">
+                <span className="animate-pulse absolute top-[15vh] left-[50vw] w-[20vw] z-[-2]">
                     <img src={SVG4} alt="svg" />
                 </span>
                 <About/>

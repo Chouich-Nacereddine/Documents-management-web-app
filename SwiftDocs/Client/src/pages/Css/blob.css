@@ -1,0 +1,19 @@
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    }
+    30% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+    }
+    60% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.4));
+    }
+    80% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.5));
+    }
+}
