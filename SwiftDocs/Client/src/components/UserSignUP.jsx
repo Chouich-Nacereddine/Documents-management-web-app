@@ -3,7 +3,7 @@ import { AiOutlineCaretLeft } from "react-icons/ai";
 import Typed from "typed.js";
 import "./Css/Form.css";
 
-const UserLogin = () => {
+const UserSignUP = () => {
     const el = useRef(null);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const UserLogin = () => {
             <div className="flex justify-center items-center">
                 <form className="form">
                     <div className="form_front w-full">
-                        <div className="form_details text-white ">Login</div>
+                        <div className="form_details text-white ">Sign Up</div>
                         <input
                             type="text"
                             className="input"
@@ -51,12 +51,12 @@ const UserLogin = () => {
                         />
                         <button className="btn">Login</button>
                         <span className="switch text-gray-500">
-                            Don't have an account?{" "}
+                        Already have an account?{" "}
                             <a
-                                href="/sign-up"
+                                href="/login"
                                 className="signup_tog text-white"
                             >
-                                Sign Up
+                                Login
                             </a>
                         </span>
                     </div>
@@ -66,4 +66,4 @@ const UserLogin = () => {
     );
 };
 
-export default UserLogin;
+export default UserSignUP;

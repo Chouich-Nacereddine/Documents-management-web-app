@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="text-[#FF6600] text-lg sm:text-xl font-medium tracking-widest ">
                     <a href="/" className="mr-2 sm:mr-6 hover:text-white">Home</a>
                     <a href="#about" className="mr-2 sm:mr-6 hover:text-white">About</a>
-                    <a href="/contact" className="mr-2 sm:mr-6 hover:text-white">Contact</a>
+                    <a href="#contact" className="mr-2 sm:mr-6 hover:text-white">Contact</a>
                 </div>
             </div>
             <div className="text-lg sm:text-xl font-semibold flex justify-end w-[30%] sm:w-[55vw]">

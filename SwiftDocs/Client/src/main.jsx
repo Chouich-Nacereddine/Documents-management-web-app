@@ -6,9 +6,11 @@ import './index.css'
 import router from './Router.jsx'
 import Navbar from './components/Navbar'
 
+const isAuthenticated = true
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Navbar/>
+    {!isAuthenticated && <Navbar />}
     <RouterProvider router={router} />
   </React.StrictMode>,
 )

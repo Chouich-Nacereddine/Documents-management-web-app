@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Carousel from './components/Carousel'
+import Dashboard from './pages/Dashboard'
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     {
         path:'/sign-up',
         element: <SignUp/>
+    },
+    {
+        path:'/Dashboard',
+        element: <Dashboard/>
     },
     {
         path:'*',
