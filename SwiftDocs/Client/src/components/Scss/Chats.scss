@@ -19,9 +19,9 @@
   --info-icon-bg-2: #c6f0ea;
   --info-icon-bg-3: #d9d3ff;
   --info-icon-bg-4: #ffe1d4;
-  --app-bg: #060415;
-  --box-color: #12172d;
-  --box-border:  #477eff;
+  --app-bg: #2c2e30;
+  --box-color: #2c2e30;
+  --box-border:  #FF6600;
   --button-bg: #477eff;
   --text-dark: rgba(255,255,255,1);
   --text-light: rgba(255,255,255,.6);
@@ -37,84 +37,6 @@
   --logo-path-2: #576c99;
   --box-shadow: rgba( 18, 23, 45 ,.6) 0px 8px 24px;
   --scrollbar-thumb: linear-gradient(to bottom, rgba(43, 88, 118, .8), rgba(78, 67, 118, .8));
-
-  &[data-theme="indigo"], &[data-theme='pink'] {
-    --app-bg: #fff;
-    --box-color: #f5f8fc;
-    --box-border: #e7edf5;
-    --text-dark: #1a2f45;
-    --text-light: #445e78;
-    --chat-box-dark: #1b243b;
-    --chat-box-light: #fff;
-    --button-bg: #004dfc;
-    --button-text: #fff;
-    --toggle-bg: #004dfc;
-    --toggle-bg-off: #6895A3;
-    --toggle-ball: #fff;
-    --logo-path-1: #A0C9E1;
-    --logo-path-2: #18689C;
-    --list-item-active: #e5effb;
-    --number-bg: #6895A3;
-    --message-box-1: #fff;
-    --message-box-2: #1a233b;
-    --chat-input: #f5f8fc;
-    --border-light: #e5e6eb;
-    --info-box-1: rgba( 217, 228, 252 ,1);
-    --info-box-2: rgba( 226, 246, 243 ,1);
-    --info-box-3: #f7f3ff;
-    --info-box-4: #fff1e9;
-    --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    --info-box-3: #b3a5ce;
-    --info-box-4: #ffceb3;
-    --scrollbar-thumb: linear-gradient(to top, rgba(131, 164, 212, .5), rgb(182, 188 ,255 , 0.4));
-  }
-
-  &[data-theme='pink'] {
-    --box-color: #f8f1f1;
-    --button-bg: #1a233b;
-    --logo-path-1:  #e8d5db;
-    --logo-path-2:  #6895A3;
-    --toggle-bg: #1a233b;
-  }
-
-  &[data-theme='navy-dark'] {
-    --app-bg: #060415;
-    --box-color: #12172d;
-    --box-border:  #477eff;
-    --button-bg: #477eff;
-    --toggle-bg: #477eff;
-    --toggle-bg-off: #6895a3;
-    --message-box-2: #477eff;
-    --message-box-1: #576c99;
-    --chat-input: #060415;
-    --border-light: #8187a2;
-  }
-
-  &[data-theme='navy-dark'],
-  &[data-theme='dark'] {
-    --text-dark: rgba(255,255,255,1);
-    --text-light: rgba(255,255,255,.6);
-    --info-box-1: rgba(160, 186, 242, 0.5);
-    --info-box-2: rgba(168, 240, 229, 0.55);
-    --info-box-3: rgba(194, 168, 240, 0.34);
-    --info-box-4: rgba(240, 185, 168, 0.34);
-    --logo-path-1: #477eff;
-    --logo-path-2: #576c99;
-    --scrollbar-thumb: linear-gradient(to bottom, rgba(43, 88, 118, .8), rgba(78, 67, 118, .8));
-  }
-
-  &[data-theme='dark'] {
-    --app-bg: #040508;
-    --box-color: #131a24;
-    --box-border:  #131a24;
-    --button-bg: #1e2b4a;
-    --toggle-bg: #477eff;
-    --toggle-bg-off: #6895a3;
-    --message-box-2: #1e2b4a;
-    --message-box-1: #576c99;
-    --chat-input: #040508;
-    --border-light:  #040508;
-  }
 }
 
 .app-container {
@@ -163,7 +85,7 @@
 }
 
 .app-profile-box {
-  border: 1px solid var(--box-border);
+  border: 2px solid var(--box-border);
   background-color: var(--box-color);
   display: flex;
   align-items: center;
@@ -197,34 +119,6 @@
   }
 }
 
-.switch-status {
-  display: flex;
-  align-items: center;
-  margin-top: 12px;
-}
-
-.switch-status input {
-  opacity: 0;
-  position: absolute;
-  width: 0;
-  height: 0;
-
-  &:checked + label {
-    background-color: var(--toggle-bg);
-
-    &:before {
-      left: 12px;
-    }
-  }
-
-   &:checked ~ .toggle-offline {
-     display: none;
-   }
-
-  &:checked ~ .toggle-online {
-     display: inline-block;
-   }
-}
 
 .toggle-text { user-select: none; color: var(--text-light); }
 
