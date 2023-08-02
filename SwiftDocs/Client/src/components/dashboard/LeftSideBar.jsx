@@ -54,7 +54,7 @@ const LeftSideBar = () => {
                             onClick={() => SideBar_handleSpanClick(index)}
                             className={`cursor-pointer rounded-md ${
                                 SideBar_activeIndex === index
-                                    ? "text-[#FF6600] bg-gray-700 bg-blue-100"
+                                    ? "text-[#FF6600] bg-gray-700 "
                                     : "" // Empty string if not active
                             }`}
                         >

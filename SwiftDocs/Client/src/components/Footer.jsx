@@ -1333,7 +1333,7 @@ const Footer = () => {
                                 target="_blank"
                                 style={{"background-image": 'url("../assets/planning.png")'}}
                             ></a>
-                            <p>&copy; {new Date().getFullYear()} YourCompany. All rights reserved. Designed by [Nacereddine-Chouich].
+                            <p>&copy; {new Date().getFullYear()} <span>S</span>wift<span>D</span>ocs. All rights reserved. Designed by [Nacereddine-Chouich].
 </p>
                         </div>
                     </div>

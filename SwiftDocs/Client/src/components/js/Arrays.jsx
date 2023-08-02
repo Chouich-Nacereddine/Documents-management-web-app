@@ -91,18 +91,16 @@ const FirstNavBar = [
         title: "Users"
     },
     {
-        title: "Expense Centres"
-    },
-    {
-        title:"Currency Exchange"
-
+        title: "Messages"
     },
 ];
 
 const UsersSidebarArray = [
     {
         name : "Nacereddine Chouich",
-        Status: "Full stack dev",
+        Status: "Admin",
+        Email: "Full stack dev@gmail.com",
+        Position: "Full stack dev",
         departement: "IT",
         Activities: {
             title: "activiti1",

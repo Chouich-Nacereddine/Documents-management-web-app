@@ -7,8 +7,8 @@ const Dashboard = () => {
   return (
     <div>
         <UserDashboard/>
-        <AdminDashboard/>
-        <CompanyDashboard/>
+        {/* <AdminDashboard/>
+        <CompanyDashboard/> */}
     </div>
   )
 }
