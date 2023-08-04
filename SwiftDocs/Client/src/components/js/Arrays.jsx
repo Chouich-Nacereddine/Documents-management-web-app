@@ -1,3 +1,8 @@
+export { SideBar, FirstNavBar, UsersSidebarArray, SecondeNavBarArray, SecondNavBar, ThirdNavBar };
+import {FaFilePen } from 'react-icons/fa6'
+import {FaFileCirclePlus} from 'react-icons/fa6'
+import {BiSolidFileFind} from 'react-icons/bi'
+
 const SideBar = [
     {
         btn: (
@@ -61,26 +66,7 @@ const SideBar = [
             </button>
         ),
     },
-    {
-        btn: (
-            <button className="h-10 w-12  flex items-center justify-center">
-                <svg
-                    viewBox="0 0 24 24"
-                    className="h-5"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <rect x="3" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="3" width="7" height="7"></rect>
-                    <rect x="14" y="14" width="7" height="7"></rect>
-                    <rect x="3" y="14" width="7" height="7"></rect>
-                </svg>
-            </button>
-        ),
-    },
+
 ];
 
 const FirstNavBar = [
@@ -92,6 +78,27 @@ const FirstNavBar = [
     },
     {
         title: "Messages"
+    },
+];
+
+const SecondNavBar = [
+    {
+        title: "Hierarchy"
+    },
+    {
+        title: "Users"
+    }
+];
+
+const ThirdNavBar = [
+    {
+        title: (<div className="flex gap-3 text-xl">File <FaFileCirclePlus/></div>),
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">File <BiSolidFileFind/></div>),
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">File <FaFilePen/></div>),
     },
 ];
 
@@ -241,4 +248,3 @@ const SecondeNavBarArray = [
     }
 ]
 
-export { SideBar, FirstNavBar, UsersSidebarArray, SecondeNavBarArray };
