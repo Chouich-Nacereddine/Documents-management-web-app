@@ -1,7 +1,7 @@
 export { SideBar, FirstNavBar, UsersSidebarArray, SecondeNavBarArray, SecondNavBar, ThirdNavBar };
-import {FaFilePen } from 'react-icons/fa6'
-import {FaFileCirclePlus} from 'react-icons/fa6'
-import {BiSolidFileFind} from 'react-icons/bi'
+import { FaFilePen, FaFileCirclePlus, FaFileCircleExclamation } from 'react-icons/fa6'
+import { BiSolidFileFind, BiEditAlt, BiSearchAlt } from 'react-icons/bi'
+import { HiViewGridAdd } from 'react-icons/hi'
 
 const SideBar = [
     {
@@ -71,7 +71,7 @@ const SideBar = [
 
 const FirstNavBar = [
     {
-        title: "Company"
+        title: "Profile"
     },
     {
         title: "Users"
@@ -87,7 +87,16 @@ const SecondNavBar = [
     },
     {
         title: "Users"
-    }
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">Process <HiViewGridAdd/></div>)
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">Process <BiEditAlt/></div>)
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">Process <BiSearchAlt/></div>)
+    },
 ];
 
 const ThirdNavBar = [
@@ -99,6 +108,9 @@ const ThirdNavBar = [
     },
     {
         title: (<div className="flex gap-3 text-xl">File <FaFilePen/></div>),
+    },
+    {
+        title: (<div className="flex gap-3 text-xl">File <FaFileCircleExclamation/></div>),
     },
 ];
 

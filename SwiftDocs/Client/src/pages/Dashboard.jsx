@@ -6,9 +6,9 @@ import CompanyDashboard from '../components/CompanyDashboard'
 const Dashboard = () => {
   return (
     <div>
-        <UserDashboard/>
-        {/* <AdminDashboard/>
-        <CompanyDashboard/> */}
+        {/* <UserDashboard/> */}
+        {/* <AdminDashboard/> */}
+        <CompanyDashboard/>
     </div>
   )
 }

@@ -16,6 +16,8 @@ import Chat from "./Chat";
 import AddUser from "./AddUser";
 import DropFile from "./DropFile";
 import FileSearch from "./FileSearch";
+import FileValidation from "./FileValidation";
+import UserProfile from "./UserProfile";
 
 const UserDashboard = () => {
     const [UsersSideBar_activeIndex, setUsersSideBar_activeIndex] = useState(0);
@@ -27,7 +29,8 @@ const UserDashboard = () => {
     const SideBar_handleSpanClick = (index) => {
         setSideBar_activeIndex(index);
     };
-    const [FirstNavBar_activeIndex, setFirstNavBar_activeIndex] = useState(0);
+    const [FirstNavBar_activeIndex, setFirstNavBar_activeIndex] =
+        useState(0);
     const FirstNavBar_handleSpanClick = (index) => {
         setFirstNavBar_activeIndex(index);
     };
@@ -99,8 +102,12 @@ const UserDashboard = () => {
                 </div>
                 <div className="flex-grow overflow-hidden h-full flex flex-col">
                     <div className="h-10 lg:flex w-full border-b border-[#FF6600] hidden px-10">
-                        <div className={`flex h-full text-gray-400 ${SideBar_activeIndex !== 0? "hidden" : ""}`}>
-                            {FirstNavBar.map((item, index) => (
+                        <div
+                            className={`flex h-full text-gray-400 ${
+                                SideBar_activeIndex !== 0 ? "hidden" : ""
+                            }`}
+                        >
+                            {FirstNavBar.slice(0,2).map((item, index) => (
                                 <a
                                     key={index}
                                     onClick={() =>
@@ -116,8 +123,12 @@ const UserDashboard = () => {
                                 </a>
                             ))}
                         </div>
-                        <div className={`flex h-full text-gray-400 ${SideBar_activeIndex !== 1? "hidden" : ""}`}>
-                            {SecondNavBar.map((item, index) => (
+                        <div
+                            className={`flex h-full text-gray-400 ${
+                                SideBar_activeIndex !== 1 ? "hidden" : ""
+                            }`}
+                        >
+                            {SecondNavBar.slice(0, 1).map((item, index) => (
                                 <a
                                     key={index}
                                     onClick={() =>
@@ -133,8 +144,12 @@ const UserDashboard = () => {
                                 </a>
                             ))}
                         </div>
-                        <div className={`flex h-full text-gray-400 ${SideBar_activeIndex !== 2? "hidden" : ""}`}>
-                            {ThirdNavBar.map((item, index) => (
+                        <div
+                            className={`flex h-full text-gray-400 ${
+                                SideBar_activeIndex !== 2 ? "hidden" : ""
+                            }`}
+                        >
+                            {ThirdNavBar.slice(0,3).map((item, index) => (
                                 <a
                                     key={index}
                                     onClick={() =>
@@ -183,65 +198,80 @@ const UserDashboard = () => {
                     {/* body */}
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 0 || SideBar_activeIndex !== 0? "hidden" : ""
+                            FirstNavBar_activeIndex !== 0 ||
+                            SideBar_activeIndex !== 0
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <CompanyNavBody
+                        <UserProfile
                             data={UsersSidebarArray[UsersSideBar_activeIndex]}
                         />
                     </div>
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 1 || SideBar_activeIndex !== 0? "hidden" : ""
-                        } "`}
-                    >
-                        <UsersNavBody
-                            data={UsersSidebarArray[UsersSideBar_activeIndex]}
-                        />
-                    </div>
-                    <div
-                        className={`" ${
-                            FirstNavBar_activeIndex !== 2 || SideBar_activeIndex !== 0? "hidden" : ""
+                            FirstNavBar_activeIndex !== 1 ||
+                            SideBar_activeIndex !== 0
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
                         <Chat
                             data={UsersSidebarArray[UsersSideBar_activeIndex]}
                         />
                     </div>
+
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 0 || SideBar_activeIndex !== 1? "hidden" : ""
+                            FirstNavBar_activeIndex !== 0 ||
+                            SideBar_activeIndex !== 1
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <span className="flex justify-center items-center h-screen text-8xl">Hierashy</span>
+                        <span className="flex justify-center items-center h-screen text-8xl">
+                            Hierashy
+                        </span>
                     </div>
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 1 || SideBar_activeIndex !== 1? "hidden" : ""
+                            FirstNavBar_activeIndex !== 0 ||
+                            SideBar_activeIndex !== 2
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <AddUser/>
+                        <DropFile />
                     </div>
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 0 || SideBar_activeIndex !== 2? "hidden" : ""
+                            FirstNavBar_activeIndex !== 1 ||
+                            SideBar_activeIndex !== 2
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <DropFile/>
+                        <FileSearch />
                     </div>
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 1 || SideBar_activeIndex !== 2? "hidden" : ""
+                            FirstNavBar_activeIndex !== 2 ||
+                            SideBar_activeIndex !== 2
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <FileSearch/>
+                        <FileSearch />
                     </div>
                     <div
                         className={`" ${
-                            FirstNavBar_activeIndex !== 2 || SideBar_activeIndex !== 2? "hidden" : ""
+                            FirstNavBar_activeIndex !== 3 ||
+                            SideBar_activeIndex !== 2
+                                ? "hidden"
+                                : ""
                         } "`}
                     >
-                        <FileSearch/>
+                        <FileValidation />
                     </div>
                 </div>
             </div>

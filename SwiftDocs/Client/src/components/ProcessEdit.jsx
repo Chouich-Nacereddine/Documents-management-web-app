@@ -1,20 +1,20 @@
 import React from "react";
 
-const FileSearch = () => {
+const ProcessEdit = () => {
     return (
-        <div>
-            <div className="w-full pt-6 px-20">
+        <div className="h-screen overflow-y-auto">
+            <div className="p-10">
                 <form>
                     <label
                         for="default-search"
-                        className="mb-2 text-sm font-medium sr-only text-white"
+                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
                     >
                         Search
                     </label>
-                    <div className="relative">
-                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg
-                                className="w-4 h-4 text-gray-400"
+                                class="w-4 h-4 text-gray-500 dark:text-gray-400"
                                 aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -32,13 +32,13 @@ const FileSearch = () => {
                         <input
                             type="search"
                             id="default-search"
-                            className="block w-full p-4 pl-10 text-sm border  rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Search File..."
+                            class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Search Mockups, Logos..."
                             required
                         />
                         <button
                             type="submit"
-                            className="text-white absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+                            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Search
                         </button>
@@ -46,9 +46,6 @@ const FileSearch = () => {
                 </form>
             </div>
             <div>
-                <div className="flex justify-center p-10">
-                    <h1 className="text-3xl">File Edit</h1>
-                </div>
                 <form className="px-10 h-screen">
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
@@ -56,7 +53,7 @@ const FileSearch = () => {
                                 for="first_name"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                File name
+                                Process name
                             </label>
                             <input
                                 type="text"
@@ -70,7 +67,7 @@ const FileSearch = () => {
                                 for="last_name"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                Physical location
+                                Users Included
                             </label>
                             <input
                                 type="text"
@@ -84,7 +81,7 @@ const FileSearch = () => {
                                 for="company"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                Folder name/location
+                                Process Manager
                             </label>
                             <input
                                 type="text"
@@ -108,6 +105,63 @@ const FileSearch = () => {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                             />
                         </div>
+                        <div>
+                            <label
+                                for="website"
+                                className="block mb-2 text-sm font-medium text-[#FF6600]"
+                            >
+                                Restriction
+                            </label>
+                            <input
+                                type="url"
+                                id="website"
+                                className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                                placeholder="true/false"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                for="visitors"
+                                className="block mb-2 text-sm font-medium text-[#FF6600]"
+                            >
+                                Prefix
+                            </label>
+                            <input
+                                type="text"
+                                id="visitors"
+                                className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                                placeholder="Frontend dev"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <label
+                            for="password"
+                            className="block mb-2 text-sm font-medium text-[#FF6600]"
+                        >
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                            placeholder="•••••••••"
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label
+                            for="confirm_password"
+                            className="block mb-2 text-sm font-medium text-[#FF6600]"
+                        >
+                            Confirm password
+                        </label>
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                            placeholder="•••••••••"
+                        />
                     </div>
 
                     <button
@@ -122,4 +176,4 @@ const FileSearch = () => {
     );
 };
 
-export default FileSearch;
+export default ProcessEdit;

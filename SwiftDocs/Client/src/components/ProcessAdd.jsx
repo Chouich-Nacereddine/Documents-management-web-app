@@ -1,52 +1,12 @@
 import React from "react";
-import { BsFileEarmarkArrowDownFill } from "react-icons/bs";
-const DropFile = () => {
+
+const ProcessAdd = () => {
     return (
-        <div className="h-screen overflow-y-auto">
-            <div>
-                <h1 className="flex gap-6 text-3xl justify-center pt-6">
-                    New File{" "}
-                    <BsFileEarmarkArrowDownFill className="text-[#FF6600]" />
-                </h1>
-            </div>
-            <div className="p-10">
-                <div className="flex items-center justify-center w-full">
-                    <label
-                        for="dropzone-file"
-                        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                    >
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <svg
-                                className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 20 16"
-                            >
-                                <path
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                                />
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                <span className="font-semibold">
-                                    Click to upload
-                                </span>{" "}
-                                or drag and drop
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                                PDF, Excel, or Doc (Please make sure to choose
-                                one of the repositories below)
-                            </p>
-                        </div>
-                        <input id="dropzone-file" type="file" className="hidden" />
-                    </label>
+        <div>
+            <div className="h-screen overflow-y-auto">
+                <div className="w-100 flex justify-center">
+                    <h1 className="text-3xl p-10">New Process</h1>
                 </div>
-            </div>
-            <div>
                 <form className="px-10 h-screen">
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
@@ -54,7 +14,7 @@ const DropFile = () => {
                                 for="first_name"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                File name
+                                Process name
                             </label>
                             <input
                                 type="text"
@@ -68,7 +28,7 @@ const DropFile = () => {
                                 for="last_name"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                Physical location
+                                Users Included
                             </label>
                             <input
                                 type="text"
@@ -82,7 +42,7 @@ const DropFile = () => {
                                 for="company"
                                 className="block mb-2 text-sm font-medium text-[#FF6600]"
                             >
-                                Folder name/location
+                                Process Manager
                             </label>
                             <input
                                 type="text"
@@ -106,6 +66,63 @@ const DropFile = () => {
                                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                             />
                         </div>
+                        <div>
+                            <label
+                                for="website"
+                                className="block mb-2 text-sm font-medium text-[#FF6600]"
+                            >
+                                Restriction
+                            </label>
+                            <input
+                                type="url"
+                                id="website"
+                                className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                                placeholder="true/false"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                for="visitors"
+                                className="block mb-2 text-sm font-medium text-[#FF6600]"
+                            >
+                                Prefix
+                            </label>
+                            <input
+                                type="text"
+                                id="visitors"
+                                className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                                placeholder="Frontend dev"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <label
+                            for="password"
+                            className="block mb-2 text-sm font-medium text-[#FF6600]"
+                        >
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                            placeholder="•••••••••"
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label
+                            for="confirm_password"
+                            className="block mb-2 text-sm font-medium text-[#FF6600]"
+                        >
+                            Confirm password
+                        </label>
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+                            placeholder="•••••••••"
+                        />
                     </div>
 
                     <button
@@ -120,4 +137,4 @@ const DropFile = () => {
     );
 };
 
-export default DropFile;
+export default ProcessAdd;
