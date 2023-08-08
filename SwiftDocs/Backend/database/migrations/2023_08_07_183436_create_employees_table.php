@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('First name', 100);
-            $table->string('Last name', 100);
-            $table->string('Gender', 100);
-            $table->string('Phone number', 100);
-            $table->string('Position', 100);
+            $table->string('first_name', 100);
+            $table->string('last_name', 100)->default('Last name');
+            $table->string('Gender', 100)->default('Gender');
+            $table->string('phone_number', 100)->default('Phone number');
+            $table->string('position', 100)->default('Position');
             $table->string('email', 100);
             $table->string('password', 100);
-            $table->boolean('IsAdmin');
+            $table->boolean('isAdmin')->default(false);
             $table->timestamps();
         });
     }

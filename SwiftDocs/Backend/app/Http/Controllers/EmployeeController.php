@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 
 class EmployeeController extends Controller
 {
@@ -29,15 +31,36 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'First name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+
+        // return response()->json(['Message' => 'Connected to DB '], 201);
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'email' => 'required|email|unique:employees',
+            'password' => 'required|string|min:8',
         ]);
-        employees::create($request->post());
-        return response()->json([
-            'message' => 'Account created successfully'
-        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $employee = new Employee();
+        $employee->first_name = $request->input('first_name');
+        $employee->email = $request->input('email');
+        $employee->password = bcrypt($request->input('password'));
+        $employee->last_name = 'Last name'; // Adding default value here
+        $employee->Gender = 'Gender'; // Adding default value here
+        $employee->phone_number = 'Phone number'; // Adding default value here
+        $employee->position = 'Position'; // Adding default value here
+        $employee->isAdmin = false; // Adding default value here
+        $employee->save();
+
+
+        try {
+            $employee->save();
+            return response()->json(['message' => 'Employee created successfully'], 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create employee'], 500);
+        }
     }
 
     /**
