@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\CompanyController;
 
 
 /*
@@ -17,6 +18,7 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::post('Employees', [EmployeeController::class , 'store']);
+Route::post('Companies', [CompanyController::class , 'store']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

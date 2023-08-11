@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "../components/Footer";
@@ -11,6 +12,9 @@ import "./Css/Btn.css";
 
 const Home = () => {
     return (
+        <div>
+            <Navbar/>
+        
         <div className="sm:w-[100vw] sm:h-[100vh] text-white flex flex-col items-center justify-start font-bold pt-[25vh]">
             <div className="blob z-[-2] ">
                 <svg
@@ -52,6 +56,7 @@ const Home = () => {
             <About />
             <Contact />
             <Footer />
+        </div>
         </div>
     );
 };

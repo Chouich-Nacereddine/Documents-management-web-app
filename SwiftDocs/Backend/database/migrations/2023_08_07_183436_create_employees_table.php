@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Gender', 100)->default('Gender');
             $table->string('phone_number', 100)->default('Phone number');
             $table->string('position', 100)->default('Position');
-            $table->string('email', 100);
+            $table->string('email', 200);
             $table->string('password', 100);
             $table->boolean('isAdmin')->default(false);
             $table->timestamps();
