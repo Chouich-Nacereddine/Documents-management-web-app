@@ -3,10 +3,34 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Company extends Model
+
+// use Illuminate\Database\Eloquent\Model;
+
+class Company extends Authenticatable
 {
-    use HasFactory;
-    protected $fillable = ['company_name','industry','description','company_contact','headquarters','ceo_founder','email','password'];
+    use HasFactory, HasApiTokens, Notifiable;
+
+    protected $fillable = [
+        'company_name',
+        'industry',
+        'description',
+        'company_contact',
+        'headquarters',
+        'ceo_founder',
+        'email',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

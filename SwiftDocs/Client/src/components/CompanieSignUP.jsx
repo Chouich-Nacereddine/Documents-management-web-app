@@ -46,9 +46,11 @@ const CompanieSignUP = () => {
       password: password,
     };
 
+    // console.log(formData);
+
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/Companies",
+        "http://localhost:8000/api/Register",
         formData
       ); // Adjust the API endpoint as needed
       console.log(response.data); // Display the response from the server
