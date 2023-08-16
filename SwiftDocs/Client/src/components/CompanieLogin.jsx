@@ -5,10 +5,12 @@ import Typed from "typed.js";
 import "./Css/Form.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 const CompanieLogin = () => {
   const navigate = useNavigate();
   const el = useRef(null);
+  const { login } = useAuth(); // Get the login function from useAuth
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -47,10 +49,13 @@ const CompanieLogin = () => {
         throw Error("Invalid Credentials");
 
       const { token, company } = response.data;
+      login(token);
       // Store the token in localStorage
       localStorage.setItem("token", token);
-      alert("Welcome back! You have been successfully logged in.");
-      navigate("/dashboard");
+      localStorage.setItem("company", company);
+      // console.log('company',company , "token", token)
+      alert("Welcome back to SwiftDocs! You have been successfully logged in.");
+      navigate("/Company_dashboard");
     } catch (error) {
       console.error("Error:", error); // Log the entire error object
       setErrorMessage("Login incorrect");

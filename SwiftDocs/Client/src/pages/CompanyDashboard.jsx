@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import UsersNavBody from "./dashboard/UsersNavBody";
+import UsersNavBody from "../components/dashboard/UsersNavBody";
 import { CgLogOut } from "react-icons/cg";
+import axios from 'axios';
 
 import {
     UsersSidebarArray,
@@ -9,13 +10,13 @@ import {
     SecondeNavBarArray,
     SecondNavBar,
     ThirdNavBar,
-} from "./js/Arrays";
-import CompanyNavBody from "./dashboard/CompanyNavBody";
-import Chat from "./Chat";
-import AddUser from "./AddUser";
-import DropFile from "./DropFile";
-import FileSearch from "./FileSearch";
-import FileValidation from "./FileValidation";
+} from "../components/js/Arrays";
+import CompanyNavBody from "../components/dashboard/CompanyNavBody";
+import Chat from "../components/Chat";
+import AddUser from "../components/AddUser";
+import DropFile from "../components/DropFile";
+import FileSearch from "../components/FileSearch";
+import FileValidation from "../components/FileValidation";
 
 const CompanyDashboard = () => {
     const [UsersSideBar_activeIndex, setUsersSideBar_activeIndex] = useState(0);
@@ -37,8 +38,10 @@ const CompanyDashboard = () => {
         name: "James Smith",
     };
 
+    
+
     return (
-        <div className="pt-1 ">
+        <div className="p-0 ">
             <div className="bg-[#1D1F21] text-white h-screen flex overflow-hidden text-sm ">
                 <div className="h-screen ">
                     <div className="h-full bg-[#1D1F21] border-[#FF6600] w-20 flex-shrink-10 border-r flex-col hidden sm:flex">

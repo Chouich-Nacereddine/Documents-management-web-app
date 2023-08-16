@@ -45,6 +45,11 @@ return [
             'driver' => 'sanctum', // Use Sanctum driver
             'provider' => 'companies', // Use the 'companies' provider
         ],
+
+        'employee' => [
+            'driver' => 'sanctum', // Use Sanctum driver
+            'provider' => 'employees', // Use the 'employees' provider
+        ],
     ],
 
     /*
@@ -75,10 +80,10 @@ return [
             'model' => App\Models\Company::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'employees' => [
+            'driver' => 'eloquent',
+            'table' => App\Models\Employee::class,
+        ],
     ],
 
     /*

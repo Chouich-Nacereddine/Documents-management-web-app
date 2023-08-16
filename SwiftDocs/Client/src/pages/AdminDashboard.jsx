@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import UsersNavBody from "./dashboard/UsersNavBody";
-import  ProcessAdd from './ProcessAdd'
-import  ProcessEdit from './ProcessEdit'
-import  ProcessSearch from './ProcessSearch'
+import UsersNavBody from "../components/dashboard/UsersNavBody";
+import  ProcessAdd from '../components/ProcessAdd'
+import  ProcessEdit from '../components/ProcessEdit'
+import  ProcessSearch from '../components/ProcessSearch'
 import { CgLogOut } from "react-icons/cg";
 
 import {
@@ -12,14 +12,14 @@ import {
     SecondeNavBarArray,
     SecondNavBar,
     ThirdNavBar,
-} from "./js/Arrays";
-import CompanyNavBody from "./dashboard/CompanyNavBody";
-import Chat from "./Chat";
-import AddUser from "./AddUser";
-import DropFile from "./DropFile";
-import FileSearch from "./FileSearch";
-import FileValidation from "./FileValidation";
-import UserProfile from "./UserProfile";
+} from "../components/js/Arrays";
+import CompanyNavBody from "../components/dashboard/CompanyNavBody";
+import Chat from "../components/Chat";
+import AddUser from "../components/AddUser";
+import DropFile from "../components/DropFile";
+import FileSearch from "../components/FileSearch";
+import FileValidation from "../components/FileValidation";
+import UserProfile from "../components/UserProfile";
 
 const AdminDashboard = () => {
     const [UsersSideBar_activeIndex, setUsersSideBar_activeIndex] = useState(0);
