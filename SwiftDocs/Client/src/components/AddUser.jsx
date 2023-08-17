@@ -7,10 +7,15 @@ const AddUser = () => {
   const [Last_name, setLast_name] = useState("");
   const [Gender, setGender] = useState("");
   const [Phone_number, setPhone_number] = useState("");
-  const [IsAdmin, setIsAdmin] = useState(false);
+  const [IsAdmin, setIsAdmin] = useState();
   const [Position, setPosition] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+
+  const handleIsAdminChange = (e) => {
+    const value = e.target.value.toLowerCase(); 
+    setIsAdmin(value === 'true' || value === '1');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +54,7 @@ const AddUser = () => {
           <FaUserPlus className="text-[#FF6600] " />
         </h1>
       </div>
-      <form className="px-10 h-screen">
+      <form className="px-10 h-screen" onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
             <label
@@ -133,7 +138,7 @@ const AddUser = () => {
               placeholder="true/false"
               name="IsAdmin"
               value={IsAdmin}
-              onChange={(e) => setIsAdmin(e.target.value)}
+              onChange={handleIsAdminChange}
             />
           </div>
           <div>
