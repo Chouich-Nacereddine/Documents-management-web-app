@@ -53,7 +53,7 @@ const CompanieLogin = () => {
       // Store the token in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("company", JSON.stringify(company));
-      console.log('company',company , "token", token)
+      // console.log('company',company , "token", token)
       alert("Welcome back to SwiftDocs! You have been successfully logged in.");
       navigate("/Company_dashboard");
     } catch (error) {
