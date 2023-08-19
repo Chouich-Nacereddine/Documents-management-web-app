@@ -96,48 +96,44 @@ class CompanyAuthController extends Controller
         ], 200);
     }
 
-    public function updateCompany(Request $request)
+    public function update(Request $request)
     {
-        $user = Auth::guard('company')->user(); // Get the authenticated user (company)
-        if (!$user) {
-            return response()->json(['message' => 'Unauthenticated.'], 401);
+        $user = auth::guard('company')->user(); // Get the authenticated user (company)
+        $company = $user->company;
+
+        // Validate the incoming data
+        $validator = Validator::make($request->all(), [
+            'company_name' => 'required|string',
+            'industry' => 'required|string',
+            'description' => 'required|string',
+            'company_contact' => 'required|string',
+            'headquarters' => 'required|string',
+            'ceo_founder' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
-        // // Validate the incoming data
-        // $validator = Validator::make($request->all(), [
-        //     'company_name' => 'required|string',
-        //     'industry' => 'required|string',
-        //     'description' => 'required|string',
-        //     'company_contact' => 'required|string',
-        //     'headquarters' => 'required|string',
-        //     'ceo_founder' => 'required|string',
-        //     'email' => 'required|email',
-        //     'password' => 'required|string|min:8',
-        // ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json(['errors' => $validator->errors()], 422);
-        // }
+        $company->update([
+            'company_name' => $request->input('company_name'),
+            'industry' => $request->input('industry'),
+            'description' => $request->input('description'),
+            'company_contact' => $request->input('company_contact'),
+            'headquarters' => $request->input('headquarters'),
+            'ceo_founder' => $request->input('ceo_founder'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')), // Hash the password
+        ]);
 
-        // $user->update([
-        //     'company_name' => $request->input('company_name'),
-        //     'industry' => $request->input('industry'),
-        //     'description' => $request->input('description'),
-        //     'company_contact' => $request->input('company_contact'),
-        //     'headquarters' => $request->input('headquarters'),
-        //     'ceo_founder' => $request->input('ceo_founder'),
-        //     'email' => $request->input('email'),
-        //     'password' => $request->input('password'),
 
-        // ]);
+        $company->save();
 
-        // // Update the password if provided
-        // if ($request->has('password')) {
-        //     $user->password = bcrypt($request->input('password'));
-        //     $user->save();
-        // }
 
-        // return response()->json(['message' => 'Company information updated successfully!'], 200);
-        return response()->json(['message' => 'Conneted to DB'], 200);
+        return response()->json(['message' => 'Company info updated successfully', 'company' => $company]);
+        // return response()->json(['Message' => 'Connected to DB ', 'company detected'], 201);
 
     }
 

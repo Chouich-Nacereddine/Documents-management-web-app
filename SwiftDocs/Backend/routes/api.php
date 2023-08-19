@@ -20,15 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::post('/Register', [CompanyAuthController::class, 'register']);
 Route::post('/login', [CompanyAuthController::class, 'login']);
 Route::post('/logout', [CompanyAuthController::class, 'logout']);
-Route::put('/update_company', [CompanyAuthController::class, 'updateCompany']);
+Route::put('/Company/update', [CompanyAuthController::class, 'update']);
 
 
-Route::middleware('auth:sanctum')->group(function () {
-    // Route::put('/update_company', [CompanyAuthController::class, 'updateCompany']);
-});
+// Route::middleware('auth:sanctum')->group(function () {
+//     // Route::put('/Company/update', [CompanyAuthController::class, 'update']);
+// });
 
 // Authenticate Employee
 Route::post('/Employee/AddEmployee', [EmployeeAuthContoller::class, 'addEmployeee']);
+Route::get('/Employee/getAll', [EmployeeAuthContoller::class, 'index']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

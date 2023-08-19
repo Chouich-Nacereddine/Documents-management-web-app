@@ -94,6 +94,12 @@ class EmployeeAuthContoller extends Controller
         ], 200);
     }
 
+    public function index()
+    {
+        $employees = Employee::all(); // Retrieve all employees from the database
+        return response()->json(['employees' => $employees]);
+    }
+
     // Logout method for API
     public function logout(Request $request)
     {

@@ -3,10 +3,10 @@ import axios from 'axios'
 
 const Profile = () => {
     const companyAuth = localStorage.getItem("company")
-    console.log(companyAuth)
+    // console.log(companyAuth)
 
     const token = localStorage.getItem("token")
-    console.log(token)
+    // console.log(token)
 
     const [companyData, setCompanyData] = useState({
         company_name: "",
@@ -20,9 +20,10 @@ const Profile = () => {
       });
     
       useEffect(() => {
-        const storedCompanyData = localStorage.getItem("company");
+        const storedCompanyData = JSON.parse(localStorage.getItem("company"));
         if (storedCompanyData) {
-          setCompanyData(JSON.parse(localStorage.getItem("company")));
+          setCompanyData(storedCompanyData);
+          console.log("companyData updated ", companyData)
         }
       }, []);
     
@@ -37,25 +38,26 @@ const Profile = () => {
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-
-        console.log("companyData updated ", companyData)
-        localStorage.setItem("company", companyData);
+    
         try {
             const response = await axios.put(
-              "http://localhost:8000/api/update_company",
-              companyData, 
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`, // Include the API token
-                },
-              }
+                "http://localhost:8000/api/Company/update",
+                companyData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                }
             );
-      
-            console.log(response.data.message); // Display the response message
-          } catch (error) {
+    
+            console.log("Server Response:", response.data);
+            // Optionally, you can display a success message to the user
+            // or perform other actions here upon successful update.
+        } catch (error) {
             console.error("Error:", error.response.data);
-          }
-        };
+            // Handle error cases, show error messages, etc.
+        }
+    };
 
     return (
         <div className="relative bg-blue-600 w-full h-full ">
