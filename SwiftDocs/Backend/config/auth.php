@@ -50,6 +50,10 @@ return [
             'driver' => 'sanctum', // Use Sanctum driver
             'provider' => 'employees', // Use the 'employees' provider
         ],
+        'file' => [
+            'driver' => 'session', // Use session driver
+            'provider' => 'files', // Use the 'files' provider
+        ],
     ],
 
     /*
@@ -83,6 +87,10 @@ return [
         'employees' => [
             'driver' => 'eloquent',
             'table' => App\Models\Employee::class,
+        ],
+        'File' => [
+            'driver' => 'eloquent',
+            'table' => App\Models\File::class,
         ],
     ],
 

@@ -5,9 +5,8 @@ const { Readable } = require("stream");
 const app = express();
 const port = 5000;
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({ limit: "50mb" }));
 app.use(cors());
-
 
 // MEGA credentials
 const email = "nacreddinechouich0012@gmail.com";
@@ -33,7 +32,10 @@ app.post("/upload", async (req, res) => {
     const fileName = file.name;
 
     // Convert base64 content to buffer
-    const buffer = Buffer.from(fileContent.replace(/^data:.*;base64,/, ""), "base64");
+    const buffer = Buffer.from(
+      fileContent.replace(/^data:.*;base64,/, ""),
+      "base64"
+    );
 
     // Create a readable stream from the buffer
     const bufferStream = new Readable();
@@ -43,27 +45,35 @@ app.post("/upload", async (req, res) => {
     // Upload the file using megajs
     const uploadStream = storage.upload({
       name: fileName,
-      size: buffer.length
+      size: buffer.length,
+      parent: 'test',
+      Physical_location: file.Physical_location,
+      Description: file.Description,
     });
-    
+
     // Pipe the buffer stream to the upload stream
     bufferStream.pipe(uploadStream);
 
     // Listen for the completion event
-    uploadStream.on('complete', (uploadedFile) => {
-      console.log('The file was uploaded!', uploadedFile);
-      res.status(200).json({ message: "File uploaded and stored in MEGA successfully!" });
+    uploadStream.on("complete", (uploadedFile) => {
+      console.log("The file was uploaded!", uploadedFile);
+      res
+        .status(200)
+        .json({ message: "File uploaded and stored in MEGA successfully!" });
     });
 
     // Listen for the error event
-    uploadStream.on('error', (error) => {
+    uploadStream.on("error", (error) => {
       console.error("Error uploading file to MEGA:", error);
-      res.status(500).json({ error: "An error occurred while uploading the file to MEGA." });
+      res
+        .status(500)
+        .json({ error: "An error occurred while uploading the file to MEGA." });
     });
-
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "An error occurred while processing the file upload." });
+    res
+      .status(500)
+      .json({ error: "An error occurred while processing the file upload." });
   }
 });
 

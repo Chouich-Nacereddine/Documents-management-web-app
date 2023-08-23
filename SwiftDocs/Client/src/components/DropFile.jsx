@@ -5,6 +5,10 @@ import axios from "axios";
 const DropFile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFileContent, setSelectedFileContent] = useState(null);
+  const [fileName, setFileName] = useState('');
+  const [physical_location, setPhysical_location] = useState('');
+  const [folder_location, setFolder_location] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -23,6 +27,13 @@ const DropFile = () => {
     }
   };
 
+  const formData = {
+    File_Name: fileName,
+    Physical_location: physical_location,
+    Folder_location: folder_location,
+    Description: description,
+  }
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -31,8 +42,8 @@ const DropFile = () => {
       return;
     }
 
-    console.log('fileContent',selectedFileContent);
-    console.log('fileContent',selectedFile);
+    // console.log('fileContent',selectedFileContent);
+    // console.log('fileContent',selectedFile);
 
     try {
       const response = await axios.post(
@@ -40,17 +51,22 @@ const DropFile = () => {
         {
           fileContent: selectedFileContent,
           file: {
-            name: selectedFile.name,
+            name: fileName+ '.pdf',
             size: selectedFile.size,
             type: selectedFile.type,
+            Physical_location: physical_location,
+            Description: description
           },
         }
       );
 
+      
+
+
       if (response.status === 200) {
         alert("File uploaded successfully!");
-        setSelectedFile(null);
-        setSelectedFileContent(null);
+        // setSelectedFile(null);
+        // setSelectedFileContent(null);
       } else {
         alert("Error uploading file.");
       }
@@ -58,6 +74,17 @@ const DropFile = () => {
       console.error(error);
       alert("An error occurred while uploading the file.");
     }
+
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/api/file/add",
+        formData
+      )
+      console.log(res.data)
+    } catch (error) {
+      console.error("Error creating file:", error)
+    }
+    
   };
 
   return (
@@ -123,6 +150,9 @@ const DropFile = () => {
                 id="first_name"
                 className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                 placeholder="John"
+                name="fileName"
+                value={fileName}
+                onChange={(e) => setFileName(e.target.value)}
               />
             </div>
             <div>
@@ -137,6 +167,9 @@ const DropFile = () => {
                 id="last_name"
                 className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                 placeholder="Doe"
+                name="physical_location"
+                value={physical_location}
+                onChange={(e) => setPhysical_location(e.target.value)}
               />
             </div>
             <div>
@@ -151,6 +184,9 @@ const DropFile = () => {
                 id="company"
                 className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                 placeholder="Flowbite"
+                name="folder_location"
+                value={folder_location}
+                onChange={(e) => setFolder_location(e.target.value)}
               />
             </div>
             <div>
@@ -161,11 +197,13 @@ const DropFile = () => {
                 Description
               </label>
               <input
-                type="tel"
+                type="text"
                 id="phone"
                 className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
-                placeholder="123-45-678"
-                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                placeholder="Description"
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
           </div>

@@ -98,8 +98,11 @@ class CompanyAuthController extends Controller
 
     public function update(Request $request)
     {
-        $user = auth::guard('company')->user(); // Get the authenticated user (company)
-        $company = $user->company;
+        // Log the request data for debugging
+        // error_log(print_r($request->all(), true));
+
+        $companyData = $request->all();
+
 
         // Validate the incoming data
         $validator = Validator::make($request->all(), [
@@ -110,14 +113,27 @@ class CompanyAuthController extends Controller
             'headquarters' => 'required|string',
             'ceo_founder' => 'required|string',
             'email' => 'required|email',
-            'password' => 'required|string|min:8',
+            // 'password' => 'required|string|min:8',
         ]);
+
+        // return response()->json('message: validation successful!');
+
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $company->update([
+
+        // Find the company by ID
+        $companyToUpdate = Company::find($companyData['id']);
+        error_log(print_r($companyToUpdate, true));
+
+        if (!$companyToUpdate) {
+            return response()->json(['error' => 'Company not found'], 404);
+        }
+
+        // // Update the company information
+        $companyToUpdate->update([
             'company_name' => $request->input('company_name'),
             'industry' => $request->input('industry'),
             'description' => $request->input('description'),
@@ -125,15 +141,14 @@ class CompanyAuthController extends Controller
             'headquarters' => $request->input('headquarters'),
             'ceo_founder' => $request->input('ceo_founder'),
             'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')), // Hash the password
+            // 'password' => bcrypt($request->input('password')), // Hash the password
+
         ]);
 
+        $companyToUpdate->save();
 
-        $company->save();
+        return response()->json(['message' => 'Company information updated successfully!']);
 
-
-        return response()->json(['message' => 'Company info updated successfully', 'company' => $company]);
-        // return response()->json(['Message' => 'Connected to DB ', 'company detected'], 201);
 
     }
 

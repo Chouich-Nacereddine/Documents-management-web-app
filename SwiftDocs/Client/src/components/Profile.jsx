@@ -23,7 +23,7 @@ const Profile = () => {
         const storedCompanyData = JSON.parse(localStorage.getItem("company"));
         if (storedCompanyData) {
           setCompanyData(storedCompanyData);
-          console.log("companyData updated ", companyData)
+        //   console.log("companyData updated ", companyData)
         }
       }, []);
     
@@ -38,21 +38,17 @@ const Profile = () => {
     
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        console.log('updated data',companyData)
+        
         try {
             const response = await axios.put(
-                "http://localhost:8000/api/Company/update",
-                companyData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                }
+                "http://localhost:8000/api/Company_update",
+                    companyData,
             );
     
             console.log("Server Response:", response.data);
-            // Optionally, you can display a success message to the user
-            // or perform other actions here upon successful update.
+            alert(response.data.message)
         } catch (error) {
             console.error("Error:", error.response.data);
             // Handle error cases, show error messages, etc.
