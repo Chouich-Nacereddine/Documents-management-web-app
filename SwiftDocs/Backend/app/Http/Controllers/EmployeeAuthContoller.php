@@ -100,6 +100,64 @@ class EmployeeAuthContoller extends Controller
         return response()->json(['employees' => $employees]);
     }
 
+    public function update(Request $request)
+    {
+        // return response()->json(['Message' => 'Connected to DB '], 201);
+
+        // Log the request data for debugging
+        // error_log(print_r($request->all(), true));
+
+        $employeeData = $request->all();
+
+
+        // Validate the incoming data
+        $validator = Validator::make($request->all(), [
+            'First_name' => 'required|string',
+            'Last_name' => 'required|string',
+            'Gender' => 'required|string',
+            'Phone_number' => 'required|string',
+            'IsAdmin' => 'required|boolean',
+            'Position' => 'required|string',
+            'email' => 'required|email',
+            // 'password' => 'required|string|min:8',
+        ]);
+
+        // return response()->json('message: validation successful!');
+
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+
+        // Find the company by ID
+        $employeeToUpdate = Employee::find($employeeData['id']);
+        // error_log(print_r($employeeToUpdate, true));
+
+        if (!$employeeToUpdate) {
+            return response()->json(['error' => 'Company not found'], 404);
+        }
+
+        // // // Update the company information
+        $employeeToUpdate->update([
+            'First_name' => $request->input('First_name'),
+            'Last_name' => $request->input('Last_name'),
+            'Gender' => $request->input('Gender'),
+            'Phone_number' => $request->input('Phone_number'),
+            'IsAdmin' => $request->input('IsAdmin'),
+            'Position' => $request->input('Position'),
+            'email' => $request->input('email'),
+            // 'password' => bcrypt($request->input('password')), // Hash the password
+
+        ]);
+
+        $employeeToUpdate->save();
+
+        return response()->json(['message' => 'Company information updated successfully!']);
+
+
+    }
+
     // Logout method for API
     public function logout(Request $request)
     {

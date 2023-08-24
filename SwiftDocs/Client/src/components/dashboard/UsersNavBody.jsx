@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaUserEdit } from "react-icons/fa";
 import { UsersSidebarArray, SecondeNavBarArray } from "../js/Arrays";
+import axios from 'axios'
 
 const UsersNavBody = ({ employeeAll }) => {
   const [UsersSideBar_activeIndex, setUsersSideBar_activeIndex] = useState(0);
@@ -15,11 +16,59 @@ const UsersNavBody = ({ employeeAll }) => {
     setBodyIsActive(index);
   };
 
-//   console.log(employeeAll);
+  const [employeeData, setEmployeeData] = useState({
+    First_name: "",
+    Last_name: "",
+    Gender: "",
+    Phone_number: "",
+    IsAdmin: false,
+    Position: "",
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    const storedEmployeeData = employeeAll[UsersSideBar_activeIndex];
+    if (storedEmployeeData) {
+      setEmployeeData(storedEmployeeData);
+      // console.log("companyData updated ", employeeData)
+    }
+  }, [UsersSideBar_activeIndex]);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setEmployeeData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log('updated data',employeeData)
+    
+    try {
+        const response = await axios.put(
+            "http://localhost:8000/api/Employee_update",
+                employeeData,
+        );
+
+        console.log("Server Response:", response.data);
+        alert(response.data.message)
+    } catch (error) {
+        console.error("Error:", error.response.data);
+        // Handle error cases, show error messages, etc.
+    }
+};
+    // console.log(employeeAll);
 
   if (!employeeAll || employeeAll.length === 0) {
     return (
-      <div role="status" className="flex items-center justify-center w-full h-screen">
+      <div
+        role="status"
+        className="flex items-center justify-center w-full h-screen"
+      >
         <svg
           aria-hidden="true"
           className="inline w-10 h-10 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -325,7 +374,7 @@ const UsersNavBody = ({ employeeAll }) => {
             >
               <div className="flex flex-col justify-center items-center w-full">
                 <div className="w-full bg-red-6 ">
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <div className="grid gap-6 mb-6 md:grid-cols-2">
                       <div>
                         <label
@@ -339,9 +388,11 @@ const UsersNavBody = ({ employeeAll }) => {
                           id="first_name"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="John"
+                          name="First_name"
                           value={
-                            employeeAll[UsersSideBar_activeIndex].First_name
+                            employeeData.First_name
                           }
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div>
@@ -356,9 +407,11 @@ const UsersNavBody = ({ employeeAll }) => {
                           id="last_name"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="Doe"
+                          name="Last_name"
                           value={
-                            employeeAll[UsersSideBar_activeIndex].Last_name
+                            employeeData.Last_name
                           }
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div>
@@ -373,7 +426,9 @@ const UsersNavBody = ({ employeeAll }) => {
                           id="company"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="Flowbite"
-                          value={employeeAll[UsersSideBar_activeIndex].Gender}
+                          name="Gender"
+                          value={employeeData.Gender}
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div>
@@ -388,9 +443,11 @@ const UsersNavBody = ({ employeeAll }) => {
                           id="phone"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="123-45-678"
+                          name="Phone_number"
                           value={
-                            employeeAll[UsersSideBar_activeIndex].Phone_number
+                            employeeData.Phone_number
                           }
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div>
@@ -401,15 +458,17 @@ const UsersNavBody = ({ employeeAll }) => {
                           IsAdmin
                         </label>
                         <input
-                          type="url"
+                          type="text"
                           id="website"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="true/false"
+                          name="IsAdmin"
                           value={
-                            employeeAll[UsersSideBar_activeIndex].IsAdmin
+                            employeeData.IsAdmin
                               ? "true"
                               : "false"
                           }
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div>
@@ -424,7 +483,9 @@ const UsersNavBody = ({ employeeAll }) => {
                           id="visitors"
                           className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                           placeholder="Frontend dev"
-                          value={employeeAll[UsersSideBar_activeIndex].Position}
+                          name="Position"
+                          value={employeeData.Position}
+                          onChange={handleInputChange}
                         />
                       </div>
                     </div>
@@ -440,7 +501,9 @@ const UsersNavBody = ({ employeeAll }) => {
                         id="email"
                         className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                         placeholder="john.doe@company.com"
-                        value={employeeAll[UsersSideBar_activeIndex].email}
+                        name="email"
+                        value={employeeData.email}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div className="mb-6">
@@ -455,6 +518,9 @@ const UsersNavBody = ({ employeeAll }) => {
                         id="password"
                         className="text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
                         placeholder="•••••••••"
+                        name="password"
+                        value={employeeData.password}
+                        onChange = {handleInputChange}
                       />
                     </div>
                     <div className="mb-6">

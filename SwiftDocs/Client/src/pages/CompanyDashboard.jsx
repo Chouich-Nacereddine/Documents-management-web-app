@@ -217,7 +217,7 @@ const CompanyDashboard = () => {
             } "`}
           >
             <UsersNavBody
-              data={employees[UsersSideBar_activeIndex]}
+              // data={employees[UsersSideBar_activeIndex]}
               employeeAll={employees}
             />
           </div>

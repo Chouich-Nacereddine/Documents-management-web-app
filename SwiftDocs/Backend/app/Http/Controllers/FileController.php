@@ -44,4 +44,10 @@ class FileController extends Controller
             return response()->json(['error' => 'Failed to create File'], 500);
         }
     }
+
+    public function index()
+    {
+        $files = File::all(); // Retrieve all files from the database
+        return response()->json(['files' => $files]);
+    }
 }

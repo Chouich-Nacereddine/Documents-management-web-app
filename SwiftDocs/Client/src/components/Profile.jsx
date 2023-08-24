@@ -39,7 +39,7 @@ const Profile = () => {
       const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log('updated data',companyData)
+        // console.log('updated data',companyData)
         
         try {
             const response = await axios.put(

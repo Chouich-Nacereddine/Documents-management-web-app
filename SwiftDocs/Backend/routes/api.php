@@ -31,9 +31,11 @@ Route::middleware('auth:sanctum')->group(function () {
 // Authenticate Employee
 Route::post('/Employee/AddEmployee', [EmployeeAuthContoller::class, 'addEmployeee']);
 Route::get('/Employee/getAll', [EmployeeAuthContoller::class, 'index']);
+Route::put('Employee_update', [EmployeeAuthContoller::class, 'update']);
 
 // Files
 Route::post('/file/add', [FileController::class, 'addFile']);
+Route::get('/Files/getAll', [FileController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
