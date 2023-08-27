@@ -31,7 +31,7 @@ const UsersNavBody = ({ employeeAll }) => {
     const storedEmployeeData = employeeAll[UsersSideBar_activeIndex];
     if (storedEmployeeData) {
       setEmployeeData(storedEmployeeData);
-      // console.log("companyData updated ", employeeData)
+      // console.log("employeeData updated ", employeeData)
     }
   }, [UsersSideBar_activeIndex]);
 

@@ -36,7 +36,7 @@ Route::put('Employee_update', [EmployeeAuthContoller::class, 'update']);
 // Files
 Route::post('/file/add', [FileController::class, 'addFile']);
 Route::get('/Files/getAll', [FileController::class, 'index']);
-
+Route::put('File_update', [FileController::class, 'update']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -47,7 +47,7 @@ const CompanyDashboard = () => {
           `http://localhost:8000/api/Employee/getAll`
         );
         setEmployees(res.data.employees);
-        console.log("employees", res.data.employees);
+        // console.log("employees", res.data.employees);  
       } catch (error) {
         console.error("Error fetching employees:", error);
       }

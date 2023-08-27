@@ -4,12 +4,13 @@ import PDF from "../assets/pdf.png";
 import editicon from "../assets/editicon.png";
 import Download from "../assets/downloadPDF.png";
 import "./Css/Card.css";
+import EditForm from "./EditForm";
 
 const FileSearch = () => {
   const [files, setFiles] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [IsEdit, setIsEdit] = useState(false);
+  const [editingFile, setEditingFile] = useState(null);
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -24,23 +25,22 @@ const FileSearch = () => {
     fetchFiles();
   }, []);
 
-  console.log("files", files);
-  
+  // console.log("files", files);
 
-  const handleSearchChange = (event) => {
-    const searchTerm = event.target.value;
-    setSearchValue(searchTerm);
-    if (searchTerm == '') {
-      setSuggestions([])
-    }
+  useEffect(() => {
     // Filter file names based on search term
     const filteredSuggestions = files.filter((file) =>
-      file.File_Name.toLowerCase().includes(searchTerm.toLowerCase())
+      file.File_Name.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setSuggestions(filteredSuggestions);
+    setSuggestions(searchValue === "" ? files : filteredSuggestions);
+  }, [searchValue, files]);
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
   };
+
   return (
-    <div>
+    <div className=" h-screen overflow-y-auto">
       <div className="w-full pt-6 px-20">
         <form>
           <label
@@ -83,8 +83,8 @@ const FileSearch = () => {
               Search
             </button>
           </div>
-          {suggestions !== "" ? (
-            <div className="flex justify-start items-center py-6 gap-6  w-[100vw]">
+          {suggestions.length > 0 && (
+            <div className="flex justify-start items-center py-6 gap-6  w-[80vw]">
               {suggestions.map((file) => (
                 <div key={file.id} className="card">
                   <div className="content">
@@ -118,6 +118,7 @@ const FileSearch = () => {
                               src={editicon}
                               alt=""
                               className="h-6 cursor-pointer"
+                              onClick={() => setEditingFile(file)}
                             />
                             <img
                               src={Download}
@@ -132,61 +133,11 @@ const FileSearch = () => {
                 </div>
               ))}
             </div>
-          ):
-          (
-            <div className="flex justify-start items-center py-6 gap-6  w-[100vw]" >
-
-            {
-              files.map((item,index) => (
-                <div key={index} className="card">
-                  <div className="content">
-                    <div className="back">
-                      <div className="back-content">
-                        <img src={PDF} alt="PDF" className="h-16" />
-                        <strong>{file.File_Name}</strong>
-                      </div>
-                    </div>
-                    <div className="front">
-                      <div className="img">
-                        <div className="circle"></div>
-                        <div className="circle" id="right"></div>
-                        <div className="circle" id="bottom"></div>
-                      </div>
-
-                      <div className="front-content">
-                        <small className="badge">{file.Description}</small>
-                        <div className="description">
-                          <div className="title">
-                            <p className="title">
-                              <strong>
-                                {file.IsValidat
-                                  ? "Validated!"
-                                  : "Not Validated!"}
-                              </strong>
-                            </p>
-                          </div>
-                          <p className="card-footer flex justify-end gap-4">
-                            <img
-                              src={editicon}
-                              alt=""
-                              className="h-6 cursor-pointer"
-                            />
-                            <img
-                              src={Download}
-                              alt=""
-                              className="h-6 cursor-pointer"
-                            />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
           )}
         </form>
+        <div className=" w-full">
+          {editingFile && <EditForm file={editingFile} />}
+        </div>
       </div>
     </div>
   );
