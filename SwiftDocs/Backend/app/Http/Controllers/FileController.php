@@ -93,7 +93,7 @@ class FileController extends Controller
 
         $fileToUpdate->save();
 
-        return response()->json(['message' => 'Company information updated successfully!']);
+        return response()->json(['message' => 'File information updated successfully!']);
 
 
 
