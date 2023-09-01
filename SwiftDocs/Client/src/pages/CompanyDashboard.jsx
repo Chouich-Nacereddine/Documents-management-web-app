@@ -268,24 +268,16 @@ const CompanyDashboard = () => {
           >
             <FileSearch />
           </div>
-          <div
+          {/* <div
             className={`" ${
               FirstNavBar_activeIndex !== 2 || SideBar_activeIndex !== 2
                 ? "hidden"
                 : ""
             } "`}
           >
-            <FileSearch />
-          </div>
-          <div
-            className={`" ${
-              FirstNavBar_activeIndex !== 3 || SideBar_activeIndex !== 2
-                ? "hidden"
-                : ""
-            } "`}
-          >
             <FileValidation />
-          </div>
+          </div> */}
+          
         </div>
       </div>
     </div>

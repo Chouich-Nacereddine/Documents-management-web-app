@@ -7,7 +7,7 @@ const FileValidation = () => {
     return (
         <div className="h-screen overflow-y-auto">
             <div className="flex justify-center p-10">
-                <h1 className="text-3xl text-[#FF6600]">Uploaded File Validation</h1>
+                <h1 className="text-3xl text-[#FF6600]">Uploaded Files Validation</h1>
             </div>
             <div className="px-6">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

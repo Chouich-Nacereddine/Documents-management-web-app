@@ -72,7 +72,7 @@ class EmployeeAuthContoller extends Controller
         ]);
 
         $employee = Employee::where('email', $request->email)->first();
-
+        // error_log($employee);
         if (!$employee || !Hash::check($request->password, $employee->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],

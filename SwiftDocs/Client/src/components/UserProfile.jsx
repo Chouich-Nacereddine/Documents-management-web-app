@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "../assets/Profile.webp";
-const UserProfile = () => {
+const UserProfile = ({EmployeeData}) => {
+    console.log('EmployeeData', EmployeeData)
     return (
         <div className="h-screen overflow-y-auto">
             <div className="bg-[#2c2e30]">

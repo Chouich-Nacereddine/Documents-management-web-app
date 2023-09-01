@@ -129,20 +129,13 @@ const ThirdNavBar = [
       </div>
     ),
   },
-  {
-    title: (
-      <div className="flex gap-3 text-xl">
-        File <FaFilePen />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <div className="flex gap-3 text-xl">
-        File <FaFileCircleExclamation />
-      </div>
-    ),
-  },
+  // {
+  //   title: (
+  //     <div className="flex gap-3 text-xl">
+  //       File <FaFileCircleExclamation />
+  //     </div>
+  //   ),
+  // },
 ];
 
 const UsersSidebarArray = [

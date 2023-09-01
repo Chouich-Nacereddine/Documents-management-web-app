@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
-const CompanieLogin = () => {
+const CompanieLogin = () => { 
   const navigate = useNavigate();
   const el = useRef(null);
   const { login } = useAuth(); // Get the login function from useAuth

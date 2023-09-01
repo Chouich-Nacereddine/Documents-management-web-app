@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Authenticate Company
 Route::post('/Register', [CompanyAuthController::class, 'register']);
 Route::post('/login', [CompanyAuthController::class, 'login']);
-Route::post('/logout', [CompanyAuthController::class, 'logout']);
+// Route::post('/logout', [CompanyAuthController::class, 'logout']);
 Route::put('Company_update', [CompanyAuthController::class, 'update']);
 
 
@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // Authenticate Employee
+Route::post('/Employee/login', [EmployeeAuthContoller::class, 'login']);
 Route::post('/Employee/AddEmployee', [EmployeeAuthContoller::class, 'addEmployeee']);
 Route::get('/Employee/getAll', [EmployeeAuthContoller::class, 'index']);
 Route::put('Employee_update', [EmployeeAuthContoller::class, 'update']);
