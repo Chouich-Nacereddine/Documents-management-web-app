@@ -4,6 +4,7 @@ import ProcessAdd from "../components/ProcessAdd";
 import ProcessEdit from "../components/ProcessEdit";
 import ProcessSearch from "../components/ProcessSearch";
 import { CgLogOut } from "react-icons/cg";
+import  axios from 'axios'
 
 import {
   UsersSidebarArray,
@@ -30,15 +31,30 @@ const AdminDashboard = () => {
 
   const SideBar_handleSpanClick = (index) => {
     setSideBar_activeIndex(index);
-  };
+  }; 
   const [FirstNavBar_activeIndex, setFirstNavBar_activeIndex] = useState(0);
   const FirstNavBar_handleSpanClick = (index) => {
     setFirstNavBar_activeIndex(index);
   };
   // console.log(FirstNavBar_activeIndex);
   const Employeedata = localStorage.getItem("employee");
-//   console.log(Employeedata);
+  //   console.log(Employeedata);
 
+  const [employees, setEmployees] = useState([]);
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/api/Employee/getAll`
+        );
+        setEmployees(res.data.employees);
+        // console.log("employees", res.data.employees);
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    };
+    fetchEmployees();
+  }, []);
   return (
     <div className="pt-1 ">
       <div className="bg-[#1D1F21] text-white h-screen flex overflow-hidden text-sm ">
@@ -190,7 +206,7 @@ const AdminDashboard = () => {
                 : ""
             } "`}
           >
-            <UserProfile EmployeeData={Employeedata} />
+            <UserProfile/>
           </div>
           <div
             className={`" ${
@@ -199,9 +215,10 @@ const AdminDashboard = () => {
                 : ""
             } "`}
           >
-            {/* <UsersNavBody
-                            data={UsersSidebarArray[UsersSideBar_activeIndex]}
-                        /> */}
+            <UsersNavBody
+              // data={employees[UsersSideBar_activeIndex]}
+              employeeAll={employees}
+            />
           </div>
           <div
             className={`" ${

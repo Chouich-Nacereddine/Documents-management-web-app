@@ -153,7 +153,7 @@ class EmployeeAuthContoller extends Controller
 
         $employeeToUpdate->save();
 
-        return response()->json(['message' => 'Company information updated successfully!']);
+        return response()->json(['message' => 'Employee information updated successfully!']);
 
 
     }
