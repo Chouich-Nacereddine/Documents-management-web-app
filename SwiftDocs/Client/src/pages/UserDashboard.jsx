@@ -5,7 +5,7 @@ import { CgLogOut } from "react-icons/cg";
 import {
     UsersSidebarArray,
     SideBar,
-    FirstNavBar,
+    UserFirstNavBar,
     SecondeNavBarArray,
     SecondNavBar,
     ThirdNavBar,
@@ -106,7 +106,7 @@ const UserDashboard = () => {
                                 SideBar_activeIndex !== 0 ? "hidden" : ""
                             }`}
                         >
-                            {FirstNavBar.slice(0,2).map((item, index) => (
+                            {UserFirstNavBar.map((item, index) => (
                                 <a
                                     key={index}
                                     onClick={() =>

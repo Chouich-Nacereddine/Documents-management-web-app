@@ -5,6 +5,7 @@ export {
   SecondeNavBarArray,
   SecondNavBar,
   ThirdNavBar,
+  UserFirstNavBar,
 };
 import {
   FaFilePen,
@@ -78,6 +79,15 @@ const FirstNavBar = [
   },
   {
     title: "Users",
+  },
+  {
+    title: "Messages",
+  },
+];
+
+const UserFirstNavBar = [
+  {
+    title: "Profile",
   },
   {
     title: "Messages",
