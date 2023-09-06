@@ -102,16 +102,16 @@ const FileSearch = () => {
               onChange={handleSearchChange}
               required
             />
-            <button
+            {/* <button
               type="submit"
               className="text-white absolute right-2.5 bottom-2.5 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
             >
               Search
-            </button>
+            </button> */}
           </div>
         </form>
         {suggestions.length > 0 && (
-          <div className="flex justify-start items-center py-6 gap-6  w-[80vw]">
+          <div className="flex justify-start items-center py-6 gap-6  w-[80vw] flex-wrap">
             {suggestions.map((file) => (
               <div key={file.id} className="card">
                 <div className="content">

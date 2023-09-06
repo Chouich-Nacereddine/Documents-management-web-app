@@ -91,27 +91,27 @@ const SecondNavBar = [
   {
     title: "Users",
   },
-  {
-    title: (
-      <div className="flex gap-3 text-xl">
-        Process <HiViewGridAdd />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <div className="flex gap-3 text-xl">
-        Process <BiEditAlt />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <div className="flex gap-3 text-xl">
-        Process <BiSearchAlt />
-      </div>
-    ),
-  },
+  // {
+  //   title: (
+  //     <div className="flex gap-3 text-xl">
+  //       Process <HiViewGridAdd />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   title: (
+  //     <div className="flex gap-3 text-xl">
+  //       Process <BiEditAlt />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   title: (
+  //     <div className="flex gap-3 text-xl">
+  //       Process <BiSearchAlt />
+  //     </div>
+  //   ),
+  // },
 ];
 
 const ThirdNavBar = [

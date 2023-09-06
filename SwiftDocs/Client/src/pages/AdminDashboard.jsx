@@ -216,7 +216,6 @@ const AdminDashboard = () => {
             } "`}
           >
             <UsersNavBody
-              // data={employees[UsersSideBar_activeIndex]}
               employeeAll={employees}
             />
           </div>
@@ -249,7 +248,7 @@ const AdminDashboard = () => {
           >
             <AddUser />
           </div>
-          <div
+          {/* <div
             className={`" ${
               FirstNavBar_activeIndex !== 2 || SideBar_activeIndex !== 1
                 ? "hidden"
@@ -275,7 +274,7 @@ const AdminDashboard = () => {
             } "`}
           >
             <ProcessSearch />
-          </div>
+          </div> */}
           <div
             className={`" ${
               FirstNavBar_activeIndex !== 0 || SideBar_activeIndex !== 2

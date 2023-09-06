@@ -64,7 +64,7 @@ const UserProfile = () => {
         </div>
         <div className="flex flex-col items-center py-6">
           <h2 className="text-xl">Welcome!</h2>
-          <h1 className="text-2xl text-[#FF6600]">Name</h1>
+          <h1 className="text-2xl text-[#FF6600]">{employeeData.Last_name +' '+ employeeData.First_name } </h1>
         </div>
       </div>
 
